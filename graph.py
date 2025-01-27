@@ -12,6 +12,13 @@ def create_graph_combined(path, output ):
     row2 = data[(data['method'] == 'modified_mondrian')]
     row3 = data[(data['method'] == 'original')]
     metrics = ['accuracy', 'f1', 'dp', 'spd', 'eod']
+    metrics_complete = {
+        'accuracy': 'Accuracy',
+        'f1' : 'F1-score',
+        'dp' : 'Disparate Impact',
+        'spd' : 'Statistical Parity Difference',
+        'eod' : 'Equal Opportunity Difference'
+    }
     perfect_metrics = {
         'accuracy': 1.0,
         'f1': 1.0,
@@ -21,7 +28,6 @@ def create_graph_combined(path, output ):
     }
     #creation of the graphs on a per metric basis.
     for metric in metrics:
-        y_label = metric
         y = row[metric].values
         y2 = row2[metric].values
         y3 = row3[metric].values
@@ -37,7 +43,7 @@ def create_graph_combined(path, output ):
         ax.axhline(y=perfect, color='red', linestyle=':', label='Perfect')
 
 # All info for graphs
-        title = metric
+        title = metrics_complete[metric]
         ax.set_title(title)
         ax.legend()
 
@@ -48,6 +54,7 @@ def create_graph_combined(path, output ):
 #        ax.set_xlim(left=0)
 
 #all mods for y
+        y_label = metrics_complete[metric]
         ax.set_ylabel(y_label)
         ax.yaxis.set_major_locator(MultipleLocator(0.1))
         ax.set_ylim(bottom=0.0)
@@ -77,6 +84,13 @@ def create_graph(path, attributes, output ):
         row2 = data[(data['method'] == 'modified_mondrian') & (data['protected_attribute'] == attribute)]
         row3 = data[(data['method'] == 'original') & (data['protected_attribute'] == attribute)]
         metrics = ['accuracy', 'f1', 'dp', 'spd', 'eod']
+        metrics_complete = {
+            'accuracy': 'Accuracy',
+            'f1': 'F1-score',
+            'dp': 'Disparate Impact',
+            'spd': 'Statistical Parity Difference',
+            'eod': 'Equal Opportunity Difference'
+        }
         perfect_metrics = {
             'accuracy': 1.0,
             'f1': 1.0,
@@ -102,11 +116,12 @@ def create_graph(path, attributes, output ):
             ax.axhline(y=perfect, color='red', linestyle=':', label='Perfect')
 
 # All info for graphs
-            title = metric
+            title = metrics_complete[metric]
             ax.set_title(title)
             ax.legend()
 
 #all mods for x
+            y_label = metrics_complete[metric]
             ax.set_xticks(x_even)
             ax.set_xticklabels(x)
             ax.set_xlabel('K Value')
