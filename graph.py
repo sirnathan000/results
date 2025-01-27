@@ -24,7 +24,7 @@ def create_graph_combined(path, output ):
         y_label = metric
         y = row[metric].values
         y2 = row2[metric].values
-        y3 = np.repeat(row3[metric].values, len(y))
+        y3 = row3[metric].values
         perfect = perfect_metrics.get(metric, 0)
         x = [2, 3, 4, 5, 6, 7, 8, 9, 10, 25, 50, 75, 100]
         x_even = np.linspace(1, len(x), len(x))
@@ -33,7 +33,7 @@ def create_graph_combined(path, output ):
 # Plot data
         ax.plot(x_even, y, color='blue', label='Mondrian', marker='o', linestyle='--')
         ax.plot(x_even, y2, color='green', label='Modified Mondrian', marker='x', linestyle='-.')
-        ax.plot(x_even, y3, color='black', label='Original data', marker='d', linestyle='-.')
+        ax.axhline(y=y3, color='black', label='Original data', marker='d', linestyle='-.')
         ax.axhline(y=perfect, color='red', linestyle=':', label='Perfect')
 
 # All info for graphs
@@ -89,7 +89,7 @@ def create_graph(path, attributes, output ):
             y_label = attribute + '_' + metric
             y = row[metric].values
             y2 = row2[metric].values
-            y3 = np.repeat(row3[metric].values, len(y))
+            y3 = row3[metric].values
             perfect = perfect_metrics.get(metric, 0)
             x = [2, 3, 4, 5, 6, 7, 8, 9, 10, 25, 50, 75, 100]
             x_even = np.linspace(1, len(x), len(x))
@@ -98,7 +98,7 @@ def create_graph(path, attributes, output ):
 # Plot data
             ax.plot(x_even, y, color='blue', label='Mondrian', marker='o', linestyle='--')
             ax.plot(x_even, y2, color='green', label='Modified Mondrian', marker='x', linestyle='-.')
-            ax.plot(x_even, y3, color='black', label='Original data', marker='d', linestyle='-.')
+            ax.axhline(y=y3, color='black', label='Original data', marker='d', linestyle='-.')
             ax.axhline(y=perfect, color='red', linestyle=':', label='Perfect')
 
 # All info for graphs
