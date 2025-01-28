@@ -148,6 +148,9 @@ def create_graph(path, attributes, output ):
             write_to = output + '_' + attribute + '_' + metric + '.png'
             fig.savefig(write_to)
 
+
+'''
+#old setup
 create_graph('Processed/results_folkstable_combined.csv', ['SEX', 'RAC1P'], 'graphs_v2/results_folkstable_combined')
 create_graph_combined('Processed/results_folkstable_combined_avg_allQI.csv', 'graphs_v2/results_folkstable_combined_avg_allQI')
 create_graph_combined('Processed/results_folkstable_combined_avg_just_sex_rac1p.csv', 'graphs_v2/results_folkstable_combined_avg_just_sex_rac1p')
@@ -158,3 +161,7 @@ create_graph('Processed/results_student_sex_new.csv', ['sex', 'age'], 'graphs_v2
 create_graph('Processed/results_student_combined.csv', ['sex', 'age'], 'graphs_v2/results_student_combined_')
 create_graph_combined('Processed/results_student_combined_avg_allQI.csv', 'graphs_v2/results_studentcombined_avg_allQI_')
 create_graph_combined('Processed/results_student_combined_avg_just_sex_and_age.csv', 'graphs_v2/results_student_avg_just_sex_and_age_att')
+'''
+
+create_graph_combined('Experiment_runs/results_folkstable_runs.csv', 'graphs_experiment/results_folkstable_allQI_runs')
+create_graph_combined('Experiment_runs/results_student_runs.csv', 'graphs_experiment/results_student_allQI_runs')
